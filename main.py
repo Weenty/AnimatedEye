@@ -57,6 +57,7 @@ class AnimationUpdater(QObject):
         animation_images = stay_mid
         prev_animation_index = 0
         try:
+            # Основной цикл, в котором ловим кадры с вебкамеры
             while self.running:
                 ret, frame = cap.read()
                 if not ret:
