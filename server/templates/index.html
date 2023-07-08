@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Image</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            getRandomImage(); // Получение первого изображения при загрузке страницы
+            setInterval(getRandomImage, 250); 
+        });
+
+        function getRandomImage() {
+            $.ajax({
+                url: '/random_image',
+                type: 'GET',
+                success: function(response) {
+                    var image_path = response.image_path;
+                    $('#random-image').attr('src', image_path);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <img id="random-image" alt="Random Image">
+</body>
+</html>
